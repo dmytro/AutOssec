@@ -3,14 +3,13 @@
 # and role specific configuration for the node
 # get a key from the ossec-server if there's one
 
-if not node['lsb']['codename'].eql?('lucid')
-  return true
-end
+# if not node['lsb']['codename'].eql?('lucid')
+#   return true
+# end
 
 class Chef::Recipe
   include OssecCore
 end
-
 
 # Run this recipe if the node is an agent. Since the ossec::agent recipe is
 # added to the base role, ossec-servers will run it as well, making this check
@@ -26,9 +25,9 @@ end
 ossec_server = search(:node,
                       "role:ossec-server " \
                       "AND chef_environment:#{node.chef_environment}"
-                     ).first
+                      ).first || search(:node, "role:ossec-server ").first
 if ossec_server.nil?
-  Chef::Log.info("OSSEC: No ossec server available. Agent will not be provisionned")
+  Chef::Log.info("OSSEC: No ossec server available. Agent will not be provisioned")
   return true
 end
 

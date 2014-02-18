@@ -20,9 +20,13 @@ service "ossec-server" do
 end
 
 # Get all the agents at once, more efficient
-ossec_agents = search(:node,
-                      "roles:ossec-agent "\
-                      "AND chef_environment:#{node.chef_environment}")
+ossec_agents = search(:node)
+# ,
+#                       "roles:ossec-agent "\
+#                       "AND chef_environment:#{node.chef_environment}")
+
+puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+puts ossec_agents
 
 # resolve searches in server rules
 ossec_hostname_search()
@@ -37,7 +41,7 @@ end
 
 ossec_agents.each do |agent|
   # don't process thy self
-  if agent.ipaddress == node.ipaddress
+  if agent['ipaddress'] == node['ipaddress']
     next
   end
 

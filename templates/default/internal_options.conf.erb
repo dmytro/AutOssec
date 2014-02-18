@@ -21,7 +21,7 @@ analysisd.stats_mindiff=<%= node[:ossec][:internal][:analysisd][:stats_mindiff] 
 analysisd.stats_percent_diff=<%= node[:ossec][:internal][:analysisd][:stats_percent_diff] %>
 # Analysisd FTS list size.
 analysisd.fts_list_size=<%= node[:ossec][:internal][:analysisd][:fts_list_size] %>
-# Analysisd FTS minimum string size.    
+# Analysisd FTS minimum string size.
 analysisd.fts_min_size_for_str=<%= node[:ossec][:internal][:analysisd][:fts_min_size_for_str] %>
 # Analysisd Enable the firewall log (at logs/firewall/firewall.log)
 # 1 to enable, 0 to disable.
@@ -54,6 +54,9 @@ maild.groupping=<%= node[:ossec][:internal][:maild][:groupping] %>
 
 # Maild full subject (0=disabled, 1=enabled)
 maild.full_subject=<%= node[:ossec][:internal][:maild][:full_subject] %>
+
+# Maild GeoIP (0=disabled, 1=enabled) - from 2.7
+maild.geoip=<%= node[:ossec][:internal][:maild][:geoip] %>
 
 
 # Monitord day_wait. Ammount of seconds to wait before compressing/signing
@@ -101,6 +104,9 @@ analysisd.debug=<%= node[:ossec][:internal][:analysisd][:debug] %>
 
 # Log collector (server, local or unix agent)
 logcollector.debug=<%= node[:ossec][:internal][:logcollector][:debug] %>
+
+# Logcollector - If it should accept remote commands from the manager, from v.2.7
+logcollector.remote_commands=<%= node[:ossec][:internal][:logcollector][:remote_commands] %>
 
 # Unix agentd
 agent.debug=<%= node[:ossec][:internal][:agent][:debug] %>
